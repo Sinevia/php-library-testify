@@ -1,5 +1,5 @@
 {
-    "name": "bafs/testify",
+    "name": "sinevia/php-library-testify",
     "description": "Testify makes writing unit tests fun again. It has an elegant syntax and keeps things simple",
     "type": "library",
     "keywords": ["unit", "testing", "framework"],
