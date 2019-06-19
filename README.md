@@ -2,6 +2,13 @@ Testify - a micro unit testing framework
 ========================================
 Testify is a micro unit testing framework for PHP 5.3+. It strives for elegance instead of feature bloat. Testing your code is no longer a chore - it's fun again.
 
+[![Build status][build-status-master-image]][build-status-master]
+[![GitHub stars](https://img.shields.io/github/stars/Sinevia/php-library-testify.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Sinevia/php-serverless/stargazers/)
+[![HitCount](http://hits.dwyl.io/Sinevia/badges.svg)](http://hits.dwyl.io/Sinevia/badges)
+
+[build-status-master]: https://travis-ci.com/Sinevia/php-library-testify
+[build-status-master-image]: https://api.travis-ci.com/Sinevia/php-serverless.svg?branch=master
+
 ## Requirements
 
 * PHP 5.3+ is required
