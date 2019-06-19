@@ -13,4 +13,4 @@ install:
   - composer info
 
 script:
-- php tests/test.php
+- php tests/TestifyTest.php
