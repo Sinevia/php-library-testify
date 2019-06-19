@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Testify\Testify;
 
