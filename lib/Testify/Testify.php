@@ -225,35 +225,47 @@ class Testify {
         return $this->recordTest(false, $message);
     }
 
-	/**
-	 * Asserts a regular expression
-	 *
-	 * @param $regEx
-	 * @param $arg
-	 * @param $message
-	 *
-	 * @return bool
-	 */
+    /**
+     * Asserts a regular expression
+     *
+     * @param $regEx
+     * @param $arg
+     * @param $message
+     *
+     * @return bool
+     */
     public function assertRegExpr($pattern, $string, $message)
-	{
-		$pattern = "/".$pattern."/i";
-		$test = preg_match($pattern,$string);
+    {
+        $pattern = "/".$pattern."/i";
+        $test = preg_match($pattern,$string);
+	return $this->recordTest($test, $message);
+    }
 
-		return $this->recordTest($test, $message);
-	}
-
-	/**
-	 * Asserts is array
-	 *
-	 * @param $arg
-	 * @param $message
-	 *
-	 * @return bool
-	 */
-    public function assertIsArray($arg, $message)
-	{
-		return $this->recordTest(is_array($arg), $message);
-	}
+    /**
+     * Asserts $arg is an array
+     *
+     * @param $arg
+     * @param $message
+     *
+     * @return bool
+     */
+    public function assertArray($arg, $message)  
+    {
+        return $this->recordTest(is_array($arg), $message);
+    }
+	
+    /**
+     * Asserts $arg is not an array
+     *
+     * @param $arg
+     * @param $message
+     *
+     * @return bool
+     */
+    public function assertNotArray($arg, $message)  
+    {
+        return $this->recordTest((is_array($arg) == false), $message);
+    }
 
     /**
      * Passes if $arg1 == $arg2.
