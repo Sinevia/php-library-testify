@@ -99,6 +99,16 @@ $tf->test("assertJson/assertNotJson test", function($tf) use($test)
 	$tf->assertFalse($test->assertJson('null')); // bool(false)
 	$tf->assertFalse($test->assertJson('hello')); // bool(false)
 	$tf->assertFalse($test->assertJson('')); // bool(false)
+	
+	$tf->assertFalse($test->assertNotJson('{"a":5}')); // bool(true)
+	$tf->assertFalse($test->assertNotJson('[1,2,3]')); // bool(true)
+	$tf->assert($test->assertNotJson('1')); // bool(false)
+	$tf->assert($test->assertNotJson('1.5')); // bool(false)
+	$tf->assert($test->assertNotJson('true')); // bool(false)
+	$tf->assert($test->assertNotJson('false')); // bool(false)
+	$tf->assert($test->assertNotJson('null')); // bool(false)
+	$tf->assert($test->assertNotJson('hello')); // bool(false)
+	$tf->assert($test->assertNotJson('')); // bool(false)
 });
 
 $tf();
