@@ -29,6 +29,15 @@ class Testify {
     private $after = null;
     private $beforeEach = null;
     private $afterEach = null;
+    
+    private $customReporter = null;
+
+    /**
+     * As html report need google api(font), while not available in China, this is an option to surrend to gfw(great fire wall)
+     *
+     * @var bool
+     */
+    public $gfw = false;
 
     /**
      * A public object for storing state and other variables across test cases and method calls.
@@ -117,10 +126,13 @@ class Testify {
     /**
      * Run all the tests and before / after functions. Calls {@see report} to generate the HTML report page.
      *
+     * @param \function $customReporter An anonymous function for creating custom reports used in {@see report}
+     *
      * @return $this
      */
-    public function run()
+    public function run(\Closure $customReporter = null)
     {
+        $this->customReporter = $customReporter;
         $arr = array($this);
 
         if (is_callable($this->before)) {
@@ -348,7 +360,7 @@ class Testify {
     }
 
     /**
-     * Generates a pretty CLI or HTML5 report of the test suite status. Called implicitly by {@see run}.
+     * Generates a pretty CLI, HTML5 or custom report of the test suite status. Called implicitly by {@see run}.
      *
      * @return $this
      */
@@ -357,8 +369,10 @@ class Testify {
         $title = $this->suiteTitle;
         $suiteResults = $this->suiteResults;
         $cases = $this->stack;
-
-        if (php_sapi_name() === 'cli') {
+        
+        if (is_callable($this->customReporter)) {
+            call_user_func($this->customReporter, $title, $suiteResults, $cases );
+        } else if (php_sapi_name() === 'cli') {
             include dirname(__FILE__) . '/testify.report.cli.php';
         } else {
             include dirname(__FILE__) . '/testify.report.html.php';
@@ -477,13 +491,4 @@ class Testify {
     {
         return $this->run();
     }
-}
-
-/**
- * TestifyException class
- *
- */
-class TestifyException extends \Exception
-{
-
 }
