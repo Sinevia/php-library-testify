@@ -74,6 +74,7 @@ $tf();
  * `assert( boolean $arg, [string $message = ''] )` - Alias for assertTrue() method
  * `assertArray( mixed $arg, [string $message = ''] )` - Passes if $arg is an array
  * `assertEquals( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 == $arg2
+ * `assertException( object $classInstance, string $methodName, [string $message = ''] )` - Passes if method throws Exception
  * `assertFalse( boolean $arg, [string $message = ''] )` - Passes if given a falsy expression
  * `assertInArray( mixed $arg, array $arr, string [string $message = ''] )` - Passes if $arg is an element of $arr
  * `assertJson( string $arg, string [string $message = ''] )` - Passes if $arg is a JSON string
@@ -84,6 +85,7 @@ $tf();
  * `assertNotNull( string $arg, string [string $message = ''] )` - Passes if $arg is not a NULL
  * `assertNotSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 !== $arg2
  * `assertNull( string $arg, string [string $message = ''] )` - Passes if $arg is a NULL
+ * `assertRegExpr( string $arg1, string $arg2, [string $message = ''] )` - Passes if $arg1 is matched in $arg2
  * `assertSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 === $arg2
  * `assertTrue( boolean $arg, [string $message = ''] )` - Passes if given a truthfull expression
  * `pass( string [string $message = ''] )` - Unconditional pass
