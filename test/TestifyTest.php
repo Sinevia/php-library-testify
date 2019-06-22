@@ -88,4 +88,17 @@ $tf->test("data set test", function($tf) use($test)
 	$tf->assert($test->assertNotInArray(9, $test->data->arr));
 });
 
+$tf->test("assertJson/assertNotJson test", function($tf) use($test)
+{
+	$tf->assert($test->assertJson('{"a":5}')); // bool(true)
+	$tf->assert($test->assertJson('[1,2,3]')); // bool(true)
+	$tf->assertFalse($test->assertJson('1')); // bool(false)
+	$tf->assertFalse($test->assertJson('1.5')); // bool(false)
+	$tf->assertFalse($test->assertJson('true')); // bool(false)
+	$tf->assertFalse($test->assertJson('false')); // bool(false)
+	$tf->assertFalse($test->assertJson('null')); // bool(false)
+	$tf->assertFalse($test->assertJson('hello')); // bool(false)
+	$tf->assertFalse($test->assertJson('')); // bool(false)
+});
+
 $tf();
