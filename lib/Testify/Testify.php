@@ -228,7 +228,7 @@ class Testify {
      */
     public function assertJson($arg, $message = '') {
         $json = json_decode($arg);
-        $isJson = $json && $str != $json;
+        $isJson = $json && $arg != $json;
         return $this->recordTest($isJson, $message);
     }
 
