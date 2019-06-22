@@ -218,6 +218,19 @@ class Testify {
     {
         return $this->recordTest($arg1 != $arg2, $message);
     }
+    
+    
+    /**
+     * Asserts that the passed is a JSON string
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function assertJson($arg, $message = '') {
+        $json = json_decode($arg);
+        $isJson = $json && $str != $json;
+        return $this->recordTest($isJson, $message);
+    }
 
     /**
      * Passes if $arg1 === $arg2.
