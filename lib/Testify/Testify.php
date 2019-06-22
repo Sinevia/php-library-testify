@@ -214,7 +214,7 @@ class Testify {
      *
      * @return bool
      */
-    public function assertException($testClass, $testMethod, $message){
+    public function assertException($testClass, $testMethod, $message = ''){
         try{
             $testClass->$testMethod();
         }
@@ -234,7 +234,7 @@ class Testify {
      *
      * @return bool
      */
-    public function assertRegExpr($pattern, $string, $message)
+    public function assertRegExpr($pattern, $string, $message = '')
     {
         $pattern = "/".$pattern."/i";
         $test = preg_match($pattern,$string);
@@ -249,7 +249,7 @@ class Testify {
      *
      * @return bool
      */
-    public function assertArray($arg, $message)  
+    public function assertArray($arg, $message = '')  
     {
         return $this->recordTest(is_array($arg), $message);
     }
@@ -262,7 +262,7 @@ class Testify {
      *
      * @return bool
      */
-    public function assertNotArray($arg, $message)  
+    public function assertNotArray($arg, $message = '') 
     {
         return $this->recordTest((is_array($arg) == false), $message);
     }
