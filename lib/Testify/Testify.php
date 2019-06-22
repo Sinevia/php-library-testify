@@ -2,6 +2,8 @@
 
 namespace Testify;
 
+use \Testify\TestifyException;
+
 /**
  * Testify - a micro unit testing framework
  *
