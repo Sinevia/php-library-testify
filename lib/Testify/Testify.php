@@ -206,6 +206,56 @@ class Testify {
     }
 
     /**
+     * Asserts the method will throw an exception
+     *
+     * @param $testClass
+     * @param $testMethod
+     * @param $message
+     *
+     * @return bool
+     */
+    public function assertException($testClass, $testMethod, $message){
+        try{
+            $testClass->$testMethod();
+        }
+        catch(\Throwable $e){
+           return $this->recordTest(true, $message);
+        }
+
+        return $this->recordTest(false, $message);
+    }
+
+	/**
+	 * Asserts a regular expression
+	 *
+	 * @param $regEx
+	 * @param $arg
+	 * @param $message
+	 *
+	 * @return bool
+	 */
+    public function assertRegExpr($pattern, $string, $message)
+	{
+		$pattern = "/".$pattern."/i";
+		$test = preg_match($pattern,$string);
+
+		return $this->recordTest($test, $message);
+	}
+
+	/**
+	 * Asserts is array
+	 *
+	 * @param $arg
+	 * @param $message
+	 *
+	 * @return bool
+	 */
+    public function assertIsArray($arg, $message)
+	{
+		return $this->recordTest(is_array($arg), $message);
+	}
+
+    /**
      * Passes if $arg1 == $arg2.
      *
      * @param mixed $arg1
