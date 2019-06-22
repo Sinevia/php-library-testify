@@ -1,6 +1,4 @@
-<?php
-require 'helpers.php';
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -167,11 +165,13 @@ require 'helpers.php';
 
 		</style>
 
+		<?php if (!$this->gfw): ?>
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow" />
 
 		<!--[if lt IE 9]>
 		  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
+		<?php endif ?>
 	</head>
 
 	<body>
@@ -185,7 +185,7 @@ require 'helpers.php';
 
 				<div class="message <?php echo $result?>">
 					<span class="green">Far out! Everything passed!</span>
-					<span class="red">Bummer! You have failing tests! [pass <?php echo percent($suiteResults)?>%]</span>
+					<span class="red">Bummer! You have failing tests! [pass <?php echo \Testify\Util::percent($suiteResults)?>%]</span>
 				</div>
 
 				<?php
