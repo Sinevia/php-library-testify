@@ -120,4 +120,15 @@ $tf->test("assertNull/assertNotNull test", function($tf) use($test)
 	$tf->assertFalse($test->assertNotNull(NULL)); // bool(false)
 });
 
+$tf->test("assertArray/assertNotArray test", function($tf) use($test)
+{
+	$tf->assert($test->assertArray([1,2])); // bool(true)
+	$tf->assert($test->assertNotArray('')); // bool(true)
+		    
+	$tf->assertFalse($test->assertArray('')); // bool(false)
+	$tf->assertFalse($test->assertNotArray([1,2])); // bool(false)
+});
+
+
+
 $tf();
