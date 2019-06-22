@@ -3,7 +3,7 @@
     "description": "Testify makes writing unit tests fun again. It has an elegant syntax and keeps things simple",
     "type": "library",
     "keywords": ["unit", "testing", "framework"],
-    "license": "GPL",
+    "license": "GPL-3.0-or-later",
     "require": {
         "php": ">=5.3.0"
     },
