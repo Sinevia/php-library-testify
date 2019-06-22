@@ -72,18 +72,20 @@ $tf();
  * `afterEach( Closure $callback )` - Executed for every test case, after it is run
  * `run( )` - Run all the tests and before / after functions. Calls report() to generate the HTML report page
  * `assert( boolean $arg, [string $message = ''] )` - Alias for assertTrue() method
- * `assertTrue( boolean $arg, [string $message = ''] )` - Passes if given a truthfull expression
- * `assertFalse( boolean $arg, [string $message = ''] )` - Passes if given a falsy expression
+ * `assertArray( mixed $arg, [string $message = ''] )` - Passes if $arg is an array
  * `assertEquals( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 == $arg2
- * `assertNotEquals( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 != $arg2
- * `assertSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 === $arg2
- * `assertNotSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 !== $arg2
+ * `assertFalse( boolean $arg, [string $message = ''] )` - Passes if given a falsy expression
  * `assertInArray( mixed $arg, array $arr, string [string $message = ''] )` - Passes if $arg is an element of $arr
- * `assertNotInArray( mixed $arg, array $arr, string [string $message = ''] )` - Passes if $arg is not an element of $arr
  * `assertJson( string $arg, string [string $message = ''] )` - Passes if $arg is a JSON string
+ * `assertNotArray( mixed $arg, [string $message = ''] )` - Passes if $arg is not an array
+ * `assertNotEquals( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 != $arg2
+ * `assertNotInArray( mixed $arg, array $arr, string [string $message = ''] )` - Passes if $arg is not an element of $arr
  * `assertNotJson( string $arg, string [string $message = ''] )` - Passes if $arg is not a JSON string
- * `assertNull( string $arg, string [string $message = ''] )` - Passes if $arg is a NULL
  * `assertNotNull( string $arg, string [string $message = ''] )` - Passes if $arg is not a NULL
+ * `assertNotSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 !== $arg2
+ * `assertNull( string $arg, string [string $message = ''] )` - Passes if $arg is a NULL
+ * `assertSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 === $arg2
+ * `assertTrue( boolean $arg, [string $message = ''] )` - Passes if given a truthfull expression
  * `pass( string [string $message = ''] )` - Unconditional pass
  * `fail( string [string $message = ''] )` - Unconditional fail
  * `report( )` - Generates a pretty CLI or HTML5 report of the test suite status. Called implicitly by run()
