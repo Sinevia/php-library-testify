@@ -113,7 +113,7 @@ $tf->test("assertJson/assertNotJson test", function($tf) use($test)
 
 $tf->test("assertNull/assertNotNull test", function($tf) use($test)
 {
-	$tf->assert($test->assertNull(NULL); // bool(true)
+	$tf->assert($test->assertNull(NULL)); // bool(true)
 	$tf->assert($test->assertNotNull('')); // bool(true)
 		    
 	$tf->assertFalse($test->assertNull('')); // bool(false)
