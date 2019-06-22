@@ -12,7 +12,15 @@ Testify is a micro unit testing framework for PHP 5.3+. It strives for elegance 
 ## Requirements
 
 * PHP 5.3+ is required
-* [Composer](http://getcomposer.org/) to install Testify is recommended (but you can do this manually)
+
+## Installation ##
+
+- Via Composer. [Composer](http://getcomposer.org/) (recommended)
+```
+composer require sinevia/php-library-testify
+```
+
+- Manually. Download and add to your project
 
 
 Usage
