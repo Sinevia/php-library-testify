@@ -72,6 +72,10 @@ $tf();
  * `assertNotSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 !== $arg2
  * `assertInArray( mixed $arg, array $arr, string [string $message = ''] )` - Passes if $arg is an element of $arr
  * `assertNotInArray( mixed $arg, array $arr, string [string $message = ''] )` - Passes if $arg is not an element of $arr
+ * `assertJson( string $arg, string [string $message = ''] )` - Passes if $arg is a JSON string
+ * `assertNotJson( string $arg, string [string $message = ''] )` - Passes if $arg is not a JSON string
+ * `assertNull( string $arg, string [string $message = ''] )` - Passes if $arg is a NULL
+ * `assertNotNull( string $arg, string [string $message = ''] )` - Passes if $arg is not a NULL
  * `pass( string [string $message = ''] )` - Unconditional pass
  * `fail( string [string $message = ''] )` - Unconditional fail
  * `report( )` - Generates a pretty CLI or HTML5 report of the test suite status. Called implicitly by run()
