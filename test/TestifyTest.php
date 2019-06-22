@@ -129,6 +129,17 @@ $tf->test("assertArray/assertNotArray test", function($tf) use($test)
 	$tf->assertFalse($test->assertNotArray([1,2])); // bool(false)
 });
 
+$tf->test("assertException test", function($tf) use($test)
+{
+	$tf->assert($test->assertException((new TestException), 'exceptionThrowingMethod')); // bool(true)
+});
+
 
 
 $tf();
+
+class TestException {
+	function exceptionThrowingMethod(){
+		throw new \RuntimeException("This is a test exception");
+	}
+}
