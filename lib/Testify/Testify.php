@@ -233,7 +233,7 @@ class Testify {
     }
     
     /**
-     * Asserts that the passed is a JSON string
+     * Asserts that the passed is a not JSON string
      *
      * @param string $arg
      * @return boolean
@@ -242,6 +242,28 @@ class Testify {
         $json = json_decode($arg);
         $isJson = $json && $arg != $json;
         return $this->recordTest(($isJson == false), $message);
+    }
+    
+    /**
+     * Asserts that the passed is a NULL
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function assertNull($arg, $message = '') {
+        $isNull = is_null($arg);
+        return $this->recordTest($isNull, $message);
+    }
+    
+    /**
+     * Asserts that the passed is not a NULL
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function assertNotNull($arg, $message = '') {
+        $isNull = is_null($arg);
+        return $this->recordTest(($isNull == false), $message);
     }
 
     /**
