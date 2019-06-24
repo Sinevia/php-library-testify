@@ -88,6 +88,8 @@ $tf();
  * `assertNotJson( string $arg, string [string $message = ''] )` - Passes if $arg is not a JSON string
  * `assertNotNull( string $arg, string [string $message = ''] )` - Passes if $arg is not a NULL
  * `assertNotSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 !== $arg2
+ * `assertNotStringContainsString( string $string, string $substring, [string $message = ''] )` - Passes if $string has no $substring
+ * `assertNotStringContainsStringIgnoringCase( string $string, string $substring, [string $message = ''] )` - Passes if $string has no $substring regardless of case
  * `assertNull( string $arg, string [string $message = ''] )` - Passes if $arg is a NULL
  * `assertRegExpr( string $arg1, string $arg2, [string $message = ''] )` - Passes if $arg1 is matched in $arg2
  * `assertStringContainsString( string $string, string $substring, [string $message = ''] )` - Passes if $string has $substring
