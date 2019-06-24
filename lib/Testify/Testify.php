@@ -178,31 +178,32 @@ class Testify {
     {
         return $this->assertTrue($arg, $message);
     }
-
-    /**
-     * Passes if given a truthfull expression.
+	
+	/**
+     * Asserts $arg is an array
      *
-     * @param boolean $arg The result of a boolean expression
-     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
+     * @param $arg
+     * @param $message
      *
-     * @return boolean
+     * @return bool
      */
-    public function assertTrue($arg, $message = '')
+    public function assertArray($arg, $message = '')  
     {
-        return $this->recordTest($arg == true, $message);
+        return $this->recordTest(is_array($arg), $message);
     }
-
-    /**
-     * Passes if given a falsy expression.
+	
+	/**
+     * Passes if $arg1 == $arg2.
      *
-     * @param boolean $arg The result of a boolean expression
+     * @param mixed $arg1
+     * @param mixed $arg2
      * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
      *
      * @return boolean
      */
-    public function assertFalse($arg, $message = '')
+    public function assertEquals($arg1, $arg2, $message = '')
     {
-        return $this->recordTest($arg == false, $message);
+        return $this->recordTest($arg1 == $arg2, $message);
     }
 
     /**
@@ -226,148 +227,16 @@ class Testify {
     }
 
     /**
-     * Asserts a regular expression
+     * Passes if given a falsy expression.
      *
-     * @param $regEx
-     * @param $arg
-     * @param $message
-     *
-     * @return bool
-     */
-    public function assertRegExpr($pattern, $string, $message = '')
-    {
-        $pattern = "/".$pattern."/i";
-        $test = preg_match($pattern,$string);
-	return $this->recordTest($test, $message);
-    }
-
-    /**
-     * Asserts $arg is an array
-     *
-     * @param $arg
-     * @param $message
-     *
-     * @return bool
-     */
-    public function assertArray($arg, $message = '')  
-    {
-        return $this->recordTest(is_array($arg), $message);
-    }
-	
-    /**
-     * Asserts $arg is not an array
-     *
-     * @param $arg
-     * @param $message
-     *
-     * @return bool
-     */
-    public function assertNotArray($arg, $message = '') 
-    {
-        return $this->recordTest((is_array($arg) == false), $message);
-    }
-
-    /**
-     * Passes if $arg1 == $arg2.
-     *
-     * @param mixed $arg1
-     * @param mixed $arg2
+     * @param boolean $arg The result of a boolean expression
      * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
      *
      * @return boolean
      */
-    public function assertEquals($arg1, $arg2, $message = '')
+    public function assertFalse($arg, $message = '')
     {
-        return $this->recordTest($arg1 == $arg2, $message);
-    }
-
-    /**
-     * Passes if $arg1 != $arg2.
-     *
-     * @param mixed $arg1
-     * @param mixed $arg2
-     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
-     *
-     * @return boolean
-     */
-    public function assertNotEquals($arg1, $arg2, $message = '')
-    {
-        return $this->recordTest($arg1 != $arg2, $message);
-    }
-    
-    
-    /**
-     * Asserts that the passed is a JSON string
-     *
-     * @param string $arg
-     * @return boolean
-     */
-    public function assertJson($arg, $message = '') {
-        $json = json_decode($arg);
-        $isJson = $json && $arg != $json;
-        return $this->recordTest($isJson, $message);
-    }
-    
-    /**
-     * Asserts that the passed is a not JSON string
-     *
-     * @param string $arg
-     * @return boolean
-     */
-    public function assertNotJson($arg, $message = '') {
-        $json = json_decode($arg);
-        $isJson = $json && $arg != $json;
-        return $this->recordTest(($isJson == false), $message);
-    }
-    
-    /**
-     * Asserts that the passed is a NULL
-     *
-     * @param string $arg
-     * @return boolean
-     */
-    public function assertNull($arg, $message = '') {
-        $isNull = is_null($arg);
-        return $this->recordTest($isNull, $message);
-    }
-    
-    /**
-     * Asserts that the passed is not a NULL
-     *
-     * @param string $arg
-     * @return boolean
-     */
-    public function assertNotNull($arg, $message = '') {
-        $isNull = is_null($arg);
-        return $this->recordTest(($isNull == false), $message);
-    }
-
-    /**
-     * Passes if $arg1 === $arg2.
-     *
-     * @param mixed $arg1
-     * @param mixed $arg2
-     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
-     *
-     * @return boolean
-     */
-    public function assertSame($arg1, $arg2, $message = '')
-    {
-        return $this->recordTest($arg1 === $arg2, $message);
-    }
-
-    /**
-     * Passes if $arg1 !== $arg2.
-     *
-     * @param mixed $arg1
-     * @param mixed $arg2
-     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
-     *
-     * @return boolean
-     */
-    public function assertNotSame($arg1, $arg2, $message = '')
-    {
-        return $this->recordTest($arg1 !== $arg2, $message);
+        return $this->recordTest($arg == false, $message);
     }
 
     /**
@@ -383,8 +252,47 @@ class Testify {
     {
         return $this->recordTest(in_array($arg, $arr), $message);
     }
-
+	
     /**
+     * Asserts that the passed is a JSON string
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function assertJson($arg, $message = '') {
+        $json = json_decode($arg);
+        $isJson = $json && $arg != $json;
+        return $this->recordTest($isJson, $message);
+    }
+	
+	/**
+     * Asserts $arg is not an array
+     *
+     * @param $arg
+     * @param $message
+     *
+     * @return bool
+     */
+    public function assertNotArray($arg, $message = '') 
+    {
+        return $this->recordTest((is_array($arg) == false), $message);
+    }
+	
+    /**
+     * Passes if $arg1 != $arg2.
+     *
+     * @param mixed $arg1
+     * @param mixed $arg2
+     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
+     *
+     * @return boolean
+     */
+    public function assertNotEquals($arg1, $arg2, $message = '')
+    {
+        return $this->recordTest($arg1 != $arg2, $message);
+    }
+	
+	/**
      * Passes if $arg is not an element of $arr.
      *
      * @param mixed $arg
@@ -396,6 +304,97 @@ class Testify {
     public function assertNotInArray($arg, array $arr, $message = '')
     {
         return $this->recordTest(!in_array($arg, $arr), $message);
+    }
+    
+    /**
+     * Asserts that the passed is a not JSON string
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function assertNotJson($arg, $message = '') {
+        $json = json_decode($arg);
+        $isJson = $json && $arg != $json;
+        return $this->recordTest(($isJson == false), $message);
+    }
+	
+    /**
+     * Asserts that the passed is not a NULL
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function assertNotNull($arg, $message = '') {
+        $isNull = is_null($arg);
+        return $this->recordTest(($isNull == false), $message);
+    }
+	
+    /**
+     * Passes if $arg1 !== $arg2.
+     *
+     * @param mixed $arg1
+     * @param mixed $arg2
+     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
+     *
+     * @return boolean
+     */
+    public function assertNotSame($arg1, $arg2, $message = '')
+    {
+        return $this->recordTest($arg1 !== $arg2, $message);
+    }
+	
+    /**
+     * Asserts that the passed is a NULL
+     *
+     * @param string $arg
+     * @return boolean
+     */
+    public function assertNull($arg, $message = '') {
+        $isNull = is_null($arg);
+        return $this->recordTest($isNull, $message);
+    }
+	
+    /**
+     * Asserts a regular expression
+     *
+     * @param $regEx
+     * @param $arg
+     * @param $message
+     *
+     * @return bool
+     */
+    public function assertRegExpr($pattern, $string, $message = '')
+    {
+        $pattern = "/".$pattern."/i";
+        $test = preg_match($pattern,$string);
+	    return $this->recordTest($test, $message);
+    }	
+	
+    /**
+     * Passes if $arg1 === $arg2.
+     *
+     * @param mixed $arg1
+     * @param mixed $arg2
+     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
+     *
+     * @return boolean
+     */
+    public function assertSame($arg1, $arg2, $message = '')
+    {
+        return $this->recordTest($arg1 === $arg2, $message);
+    }
+
+    /**
+     * Passes if given a truthfull expression.
+     *
+     * @param boolean $arg The result of a boolean expression
+     * @param string $message (optional) Custom message. SHOULD be specified for easier debugging
+     *
+     * @return boolean
+     */
+    public function assertTrue($arg, $message = '')
+    {
+        return $this->recordTest($arg == true, $message);
     }
 
     /**
