@@ -179,7 +179,7 @@ class Testify {
         return $this->assertTrue($arg, $message);
     }
 	
-	/**
+    /**
      * Asserts $arg is an array
      *
      * @param $arg
@@ -411,6 +411,33 @@ class Testify {
     {
         return $this->recordTest($arg1 === $arg2, $message);
     }
+	
+   /**
+    * Asserts string contains substring
+    * @param string $needle
+    * @param string $haystack
+    * @return boolean
+    */
+    public static function assertStringContainsString(string $needle, string $haystack, string $message = '')
+    {
+        $containsString = strpos($string, $substring) === false ? false : true;
+
+        return $this->recordTest($containsString == true, $message);
+    }
+	
+    /**
+    * Asserts string contains substring ignoring case
+    * @param string $needle
+    * @param string $haystack
+    * @return boolean
+    */
+    public static function assertStringContainsStringIgnorigCase(string $needle, string $haystack, string $message = '')
+    {
+        $containsString = stripos($string, $substring) === false ? false : true;
+
+        return $this->recordTest($containsString==true, $message);
+    }
+
 
     /**
      * Passes if given a truthfull expression.
