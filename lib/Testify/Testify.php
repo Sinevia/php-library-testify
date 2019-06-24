@@ -414,11 +414,11 @@ class Testify {
 	
    /**
     * Asserts string contains substring
-    * @param string $needle
-    * @param string $haystack
+    * @param string $string
+    * @param string $substring
     * @return boolean
     */
-    public static function assertStringContainsString(string $needle, string $haystack, string $message = '')
+    public static function assertStringContainsString(string $string, string $substring, string $message = '')
     {
         $containsString = strpos($string, $substring) === false ? false : true;
 
@@ -427,11 +427,11 @@ class Testify {
 	
     /**
     * Asserts string contains substring ignoring case
-    * @param string $needle
-    * @param string $haystack
+    * @param string $string
+    * @param string $substring
     * @return boolean
     */
-    public static function assertStringContainsStringIgnorigCase(string $needle, string $haystack, string $message = '')
+    public static function assertStringContainsStringIgnoringCase(string $string, string $substring, string $message = '')
     {
         $containsString = stripos($string, $substring) === false ? false : true;
 
