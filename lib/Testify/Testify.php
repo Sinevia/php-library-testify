@@ -9,7 +9,7 @@ use \Testify\TestifyException;
  *
  * This is the main class of the framework. Use it like this:
  *
- * @version    0.4.1
+ * @version    1.4.0
  * @author     Martin Angelov
  * @author     Marc-Olivier Fiset
  * @author     Fabien Salathe
