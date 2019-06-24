@@ -122,23 +122,28 @@ $tf->test("assertNull/assertNotNull test", function($tf) use($test)
 
 $tf->test("assertArray/assertNotArray test", function($tf) use($test)
 {
-	$tf->assert($test->assertArray([1,2])); // bool(true)
-	$tf->assert($test->assertNotArray('')); // bool(true)
+    $tf->assert($test->assertArray([1,2])); // bool(true)
+    $tf->assert($test->assertNotArray('')); // bool(true)
 		    
-	$tf->assertFalse($test->assertArray('')); // bool(false)
-	$tf->assertFalse($test->assertNotArray([1,2])); // bool(false)
+    $tf->assertFalse($test->assertArray('')); // bool(false)
+    $tf->assertFalse($test->assertNotArray([1,2])); // bool(false)
 });
 
 $tf->test("assertException test", function($tf) use($test)
 {
-	$tf->assert($test->assertException((new TestException), 'exceptionThrowingMethod')); // bool(true)
+    $tf->assert($test->assertException((new TestException), 'exceptionThrowingMethod')); // bool(true)
 });
 
 $tf->test("assertStringContainsString test", function($tf) use($test)
 {
-	$tf->assertTrue($test->assertStringContainsString('Hello world', 'world']));
+    $tf->assertTrue($test->assertStringContainsString('Hello world', 'world'));
 });
 
+
+$tf->test("assertStringContainsString test", function($tf) use($test)
+{
+    $tf->assertTrue($test->assertStringContainsStringIgnoringCase('Hello World', 'world'));
+});
 
 
 
