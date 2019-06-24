@@ -134,15 +134,17 @@ $tf->test("assertException test", function($tf) use($test)
     $tf->assert($test->assertException((new TestException), 'exceptionThrowingMethod')); // bool(true)
 });
 
-$tf->test("assertStringContainsString test", function($tf) use($test)
+$tf->test("assertStringContainsString/assertNotStringContainsString test", function($tf) use($test)
 {
     $tf->assertTrue($test->assertStringContainsString('Hello world', 'world'));
+    $tf->assertTrue($test->assertNotStringContainsString('Hello world', 'car'));
 });
 
 
-$tf->test("assertStringContainsString test", function($tf) use($test)
+$tf->test("assertStringContainsString/assertNotStringContainsStringIgnoringCase test", function($tf) use($test)
 {
     $tf->assertTrue($test->assertStringContainsStringIgnoringCase('Hello World', 'world'));
+    $tf->assertTrue($test->assertNotStringContainsStringIgnoringCase('Hello World Car', 'car'));
 });
 
 
