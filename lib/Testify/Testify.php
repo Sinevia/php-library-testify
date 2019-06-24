@@ -193,6 +193,34 @@ class Testify {
     }
 	
 	/**
+     * Asserts that an array has a specified key.
+     *
+     * @param mixed $key
+     * @param mixed $array
+     * @throws Exception
+     */
+	public function assertArrayHasKey($key, $array, string $message = ''): void
+    { 
+        $hasKey = (isset($array[$key]) == true);
+
+        return $this->recordTest($hasKey, $message);
+    }
+	
+	/**
+     * Asserts that an array has not a specified key.
+     *
+     * @param mixed $key
+     * @param mixed $array
+     * @throws Exception
+     */
+	public function assertArrayNotHasKey($key, $array, string $message = ''): void
+    { 
+        $hasNoKey = (isset($array[$key]) == false);
+
+        return $this->recordTest($hasNoKey, $message);
+    }
+	
+	/**
      * Passes if $arg1 == $arg2.
      *
      * @param mixed $arg1
