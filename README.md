@@ -90,6 +90,8 @@ $tf();
  * `assertNotSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 !== $arg2
  * `assertNull( string $arg, string [string $message = ''] )` - Passes if $arg is a NULL
  * `assertRegExpr( string $arg1, string $arg2, [string $message = ''] )` - Passes if $arg1 is matched in $arg2
+ * `assertStringContainsString( string $haystack, string $needle, [string $message = ''] )` - Passes if $haystack has $needle
+ * `assertStringContainsStringIgnoringCase( string $haystack, string $needle, [string $message = ''] )` - Passes if $haystack has $needle regardless of case
  * `assertSame( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 === $arg2
  * `assertTrue( boolean $arg, [string $message = ''] )` - Passes if given a truthfull expression
  * `pass( string [string $message = ''] )` - Unconditional pass
