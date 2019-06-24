@@ -1,6 +1,6 @@
 Testify - a micro unit testing framework
 ========================================
-Testify is a micro unit testing framework for PHP 5.3+. It strives for elegance instead of feature bloat. Testing your code is no longer a chore - it's fun again.
+Testify is a micro unit testing framework for PHP.
 
 ![No Dependencies](https://img.shields.io/badge/no-dependencies-success.svg)
 [![Build status][build-status-master-image]][build-status-master]
@@ -9,6 +9,13 @@ Testify is a micro unit testing framework for PHP 5.3+. It strives for elegance 
 
 [build-status-master]: https://travis-ci.com/Sinevia/php-library-testify
 [build-status-master-image]: https://api.travis-ci.com/Sinevia/php-serverless.svg?branch=master
+
+## Features
+
+* No externa dependencies
+* Testing your code is no longer a chore - it's fun again
+* Strives for elegance instead of feature bloat
+
 
 ## Requirements
 
