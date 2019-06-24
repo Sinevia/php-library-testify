@@ -213,7 +213,7 @@ class Testify {
      * @param mixed $array
      * @throws Exception
      */
-    public function assertArrayNotHasKey($key, $array, string $message = ''): void
+    public function assertArrayNotHasKey($key, $array, string $message = '')
     { 
         $hasNoKey = (isset($array[$key]) == false);
 
