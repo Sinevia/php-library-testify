@@ -398,7 +398,7 @@ class Testify
     {
         $containsString = stripos($string, $substring) === false ? false : true;
 
-        return $this->recordTest($containsString == true, $message);
+        return $this->recordTest($containsString == false, $message);
     }
 
     /**
