@@ -144,7 +144,7 @@ $tf->test("assertStringContainsString/assertNotStringContainsString test", funct
 $tf->test("assertStringContainsString/assertNotStringContainsStringIgnoringCase test", function($tf) use($test)
 {
     $tf->assertTrue($test->assertStringContainsStringIgnoringCase('Hello World', 'world'));
-    $tf->assertTrue($test->assertNotStringContainsStringIgnoringCase('Hello World Car', 'car'));
+    $tf->assertFalse($test->assertNotStringContainsStringIgnoringCase('Hello World', 'world'));
 });
 
 
