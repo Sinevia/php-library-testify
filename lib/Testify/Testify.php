@@ -9,7 +9,7 @@ use \Testify\TestifyException;
  *
  * This is the main class of the framework. Use it like this:
  *
- * @version    1.4.0
+ * @version    1.5.0
  * @author     Martin Angelov
  * @author     Marc-Olivier Fiset
  * @author     Fabien Salathe
@@ -18,7 +18,8 @@ use \Testify\TestifyException;
  * @license    GPL
  */
 
-class Testify {
+class Testify
+{
 
     private $tests = array();
     private $stack = array();
@@ -31,7 +32,7 @@ class Testify {
     private $after = null;
     private $beforeEach = null;
     private $afterEach = null;
-    
+
     private $customReporter = null;
 
     /**
@@ -141,7 +142,7 @@ class Testify {
             call_user_func_array($this->before, $arr);
         }
 
-        foreach($this->tests as $test) {
+        foreach ($this->tests as $test) {
             $this->currentTestCase = $test['name'];
 
             if (is_callable($this->beforeEach)) {
@@ -178,7 +179,7 @@ class Testify {
     {
         return $this->assertTrue($arg, $message);
     }
-	
+
     /**
      * Asserts $arg is an array
      *
@@ -187,11 +188,11 @@ class Testify {
      *
      * @return bool
      */
-    public function assertArray($arg, $message = '')  
+    public function assertArray($arg, $message = '')
     {
         return $this->recordTest(is_array($arg), $message);
     }
-	
+
     /**
      * Asserts that an array has a specified key.
      *
@@ -200,12 +201,12 @@ class Testify {
      * @throws Exception
      */
     public function assertArrayHasKey($key, $array, string $message = '')
-    { 
+    {
         $hasKey = (isset($array[$key]) == true);
 
         return $this->recordTest($hasKey, $message);
     }
-	
+
     /**
      * Asserts that an array has not a specified key.
      *
@@ -214,12 +215,12 @@ class Testify {
      * @throws Exception
      */
     public function assertArrayNotHasKey($key, $array, string $message = '')
-    { 
+    {
         $hasNoKey = (isset($array[$key]) == false);
 
         return $this->recordTest($hasNoKey, $message);
     }
-	
+
     /**
      * Passes if $arg1 == $arg2.
      *
@@ -243,12 +244,12 @@ class Testify {
      *
      * @return bool
      */
-    public function assertException($testClass, $testMethod, $message = ''){
-        try{
+    public function assertException($testClass, $testMethod, $message = '')
+    {
+        try {
             $testClass->$testMethod();
-        }
-        catch(\Throwable $e){
-           return $this->recordTest(true, $message);
+        } catch (\Throwable $e) {
+            return $this->recordTest(true, $message);
         }
 
         return $this->recordTest(false, $message);
@@ -280,20 +281,21 @@ class Testify {
     {
         return $this->recordTest(in_array($arg, $arr), $message);
     }
-	
+
     /**
      * Asserts that the passed is a JSON string
      *
      * @param string $arg
      * @return boolean
      */
-    public function assertJson($arg, $message = '') {
+    public function assertJson($arg, $message = '')
+    {
         $json = json_decode($arg);
         $isJson = $json && $arg != $json;
         return $this->recordTest($isJson, $message);
     }
-	
-	/**
+
+    /**
      * Asserts $arg is not an array
      *
      * @param $arg
@@ -301,11 +303,11 @@ class Testify {
      *
      * @return bool
      */
-    public function assertNotArray($arg, $message = '') 
+    public function assertNotArray($arg, $message = '')
     {
         return $this->recordTest((is_array($arg) == false), $message);
     }
-	
+
     /**
      * Passes if $arg1 != $arg2.
      *
@@ -319,8 +321,8 @@ class Testify {
     {
         return $this->recordTest($arg1 != $arg2, $message);
     }
-	
-	/**
+
+    /**
      * Passes if $arg is not an element of $arr.
      *
      * @param mixed $arg
@@ -333,30 +335,32 @@ class Testify {
     {
         return $this->recordTest(!in_array($arg, $arr), $message);
     }
-    
+
     /**
      * Asserts that the passed is a not JSON string
      *
      * @param string $arg
      * @return boolean
      */
-    public function assertNotJson($arg, $message = '') {
+    public function assertNotJson($arg, $message = '')
+    {
         $json = json_decode($arg);
         $isJson = $json && $arg != $json;
         return $this->recordTest(($isJson == false), $message);
     }
-	
+
     /**
      * Asserts that the passed is not a NULL
      *
      * @param string $arg
      * @return boolean
      */
-    public function assertNotNull($arg, $message = '') {
+    public function assertNotNull($arg, $message = '')
+    {
         $isNull = is_null($arg);
         return $this->recordTest(($isNull == false), $message);
     }
-	
+
     /**
      * Passes if $arg1 !== $arg2.
      *
@@ -370,18 +374,45 @@ class Testify {
     {
         return $this->recordTest($arg1 !== $arg2, $message);
     }
-	
+
+    /**
+     * Asserts string does not contain substring
+     * @param string $string
+     * @param string $substring
+     * @return boolean
+     */
+    public function assertNotStringContainsString(string $string, string $substring, string $message = '')
+    {
+        $containsString = strpos($string, $substring) === false ? false : true;
+
+        return $this->recordTest($containsString == false, $message);
+    }
+
+    /**
+     * Asserts string does not contain substring ignoring case
+     * @param string $string
+     * @param string $substring
+     * @return boolean
+     */
+    public function assertNotStringContainsStringIgnoringCase(string $string, string $substring, string $message = '')
+    {
+        $containsString = stripos($string, $substring) === false ? false : true;
+
+        return $this->recordTest($containsString == true, $message);
+    }
+
     /**
      * Asserts that the passed is a NULL
      *
      * @param string $arg
      * @return boolean
      */
-    public function assertNull($arg, $message = '') {
+    public function assertNull($arg, $message = '')
+    {
         $isNull = is_null($arg);
         return $this->recordTest($isNull, $message);
     }
-	
+
     /**
      * Asserts a regular expression
      *
@@ -393,11 +424,11 @@ class Testify {
      */
     public function assertRegExpr($pattern, $string, $message = '')
     {
-        $pattern = "/".$pattern."/i";
-        $test = preg_match($pattern,$string);
-	    return $this->recordTest($test, $message);
-    }	
-	
+        $pattern = "/" . $pattern . "/i";
+        $test = preg_match($pattern, $string);
+        return $this->recordTest($test, $message);
+    }
+
     /**
      * Passes if $arg1 === $arg2.
      *
@@ -411,33 +442,32 @@ class Testify {
     {
         return $this->recordTest($arg1 === $arg2, $message);
     }
-	
-   /**
-    * Asserts string contains substring
-    * @param string $string
-    * @param string $substring
-    * @return boolean
-    */
+
+    /**
+     * Asserts string contains substring
+     * @param string $string
+     * @param string $substring
+     * @return boolean
+     */
     public function assertStringContainsString(string $string, string $substring, string $message = '')
     {
         $containsString = strpos($string, $substring) === false ? false : true;
 
         return $this->recordTest($containsString == true, $message);
     }
-	
+
     /**
-    * Asserts string contains substring ignoring case
-    * @param string $string
-    * @param string $substring
-    * @return boolean
-    */
+     * Asserts string contains substring ignoring case
+     * @param string $string
+     * @param string $substring
+     * @return boolean
+     */
     public function assertStringContainsStringIgnoringCase(string $string, string $substring, string $message = '')
     {
         $containsString = stripos($string, $substring) === false ? false : true;
 
-        return $this->recordTest($containsString==true, $message);
+        return $this->recordTest($containsString == true, $message);
     }
-
 
     /**
      * Passes if given a truthfull expression.
@@ -487,9 +517,9 @@ class Testify {
         $title = $this->suiteTitle;
         $suiteResults = $this->suiteResults;
         $cases = $this->stack;
-        
+
         if (is_callable($this->customReporter)) {
-            call_user_func($this->customReporter, $title, $suiteResults, $cases );
+            call_user_func($this->customReporter, $title, $suiteResults, $cases);
         } else if (php_sapi_name() === 'cli') {
             include dirname(__FILE__) . '/testify.report.cli.php';
         } else {
@@ -510,7 +540,7 @@ class Testify {
     private function recordTest($pass, $message = '')
     {
         if (!array_key_exists($this->currentTestCase, $this->stack) ||
-              !is_array($this->stack[$this->currentTestCase])) {
+            !is_array($this->stack[$this->currentTestCase])) {
 
             $this->stack[$this->currentTestCase]['tests'] = array();
             $this->stack[$this->currentTestCase]['pass'] = 0;
@@ -523,12 +553,12 @@ class Testify {
 
         $result = $pass ? "pass" : "fail";
         $this->stack[$this->currentTestCase]['tests'][] = array(
-            "name"      => $message,
-            "type"      => $bt[1]['function'],
-            "result"    => $result,
-            "line"      => $bt[1]['line'],
-            "file"      => $bt[1]['file'],
-            "source"    => $source
+            "name" => $message,
+            "type" => $bt[1]['function'],
+            "result" => $result,
+            "line" => $bt[1]['line'],
+            "file" => $bt[1]['file'],
+            "source" => $source,
         );
 
         $this->stack[$this->currentTestCase][$result]++;
