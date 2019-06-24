@@ -418,7 +418,7 @@ class Testify {
     * @param string $substring
     * @return boolean
     */
-    public static function assertStringContainsString(string $string, string $substring, string $message = '')
+    public function assertStringContainsString(string $string, string $substring, string $message = '')
     {
         $containsString = strpos($string, $substring) === false ? false : true;
 
@@ -431,7 +431,7 @@ class Testify {
     * @param string $substring
     * @return boolean
     */
-    public static function assertStringContainsStringIgnoringCase(string $string, string $substring, string $message = '')
+    public function assertStringContainsStringIgnoringCase(string $string, string $substring, string $message = '')
     {
         $containsString = stripos($string, $substring) === false ? false : true;
 
