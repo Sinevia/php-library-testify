@@ -30,6 +30,13 @@ $tf->test("Basic assert test", function($tf) use($test)
 	$tf->assertFalse($test->assert(false));
 	$tf->assertFalse(!$test->assert(true));
 });
+	
+$tf->test("assertArrayHasKey/assertNotArrayHasKey test", function($tf) use($test)
+{
+    $tf->assert($test->assertArrayHasKey(['body'=>'Hello world'], 'body'));
+    $tf->assertFalse($test->assertNotArrayHasKey(['body'=>'Hello world'], 'body'));
+});
+
 
 $tf->test("assertEquals/assertNotEquals test", function($tf) use($test)
 {
