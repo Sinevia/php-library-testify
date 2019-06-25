@@ -81,8 +81,7 @@ $tf();
  * `run( )` - Run all the tests and before / after functions. Calls report() to generate the HTML report page
  * `assert( boolean $arg, [string $message = ''] )` - Alias for assertTrue() method
  * `assertArray( mixed $arg, [string $message = ''] )` - Passes if $arg is an array
- * `assertArrayHasKey( mixed $key, array $array, [string $message = ''] )` - Passes if $array has a $key
- * `assertArrayNotHasKey( mixed $key, array $array, [string $message = ''] )` - Passes if $array has not a $key
+ * `assertArrayHasKey( mixed $array, array $key, [string $message = ''] )` - Passes if $array has a $key
  * `assertArray( mixed $arg, [string $message = ''] )` - Passes if $arg is an array
  * `assertEquals( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 == $arg2
  * `assertException( object $classInstance, string $methodName, [string $message = ''] )` - Passes if method throws Exception
@@ -91,6 +90,7 @@ $tf();
  * `assertJson( string $arg, string [string $message = ''] )` - Passes if $arg is a JSON string
  * `assertNotArray( mixed $arg, [string $message = ''] )` - Passes if $arg is not an array
  * `assertNotEquals( mixed $arg1, mixed $arg2, string [string $message = ''] )` - Passes if $arg1 != $arg2
+ * `assertNotArrayHasKey( mixed $array, array $key, [string $message = ''] )` - Passes if $array has not a $key
  * `assertNotInArray( mixed $arg, array $arr, string [string $message = ''] )` - Passes if $arg is not an element of $arr
  * `assertNotJson( string $arg, string [string $message = ''] )` - Passes if $arg is not a JSON string
  * `assertNotNull( string $arg, string [string $message = ''] )` - Passes if $arg is not a NULL
