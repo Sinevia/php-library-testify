@@ -44,27 +44,27 @@ use Testify\Testify;
 $tf = new Testify("MyCalc Test Suite");
 
 $tf->beforeEach(function($tf) {
-	$tf->data->calc = new MyCalc(10);
+    $tf->data->calc = new MyCalc(10);
 });
 
 $tf->test("Testing the add() method", function($tf) {
-	$calc = $tf->data->calc;
+    $calc = $tf->data->calc;
 
-	$calc->add(4);
-	$tf->assert($calc->result() == 14);
+    $calc->add(4);
+    $tf->assert($calc->result() == 14);
 
-	$calc->add(-6);
-	$tf->assertEquals($calc->result(), 8);
+    $calc->add(-6);
+    $tf->assertEquals($calc->result(), 8);
 });
 
 $tf->test("Testing the mul() method", function($tf) {
-	$calc = $tf->data->calc;
+    $calc = $tf->data->calc;
 
-	$calc->mul(1.5);
-	$tf->assertEquals($calc->result(), 12);
+    $calc->mul(1.5);
+    $tf->assertEquals($calc->result(), 12);
 
-	$calc->mul(-1);
-	$tf->assertEquals($calc->result(), -12);
+    $calc->mul(-1);
+    $tf->assertEquals($calc->result(), -12);
 });
 
 $tf();
