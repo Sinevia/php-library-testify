@@ -12,9 +12,9 @@ Testify is a micro unit testing framework for PHP.
 
 ## Features
 
-* No externa dependencies
+* No external dependencies
 * Testing your code is no longer a chore - it's fun again
-* Strives for elegance instead of feature bloat
+* Strives for elegance instead of a feature bloat
 
 
 ## Requirements
