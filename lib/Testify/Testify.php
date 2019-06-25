@@ -196,11 +196,11 @@ class Testify
     /**
      * Asserts that an array has a specified key.
      *
-     * @param mixed $key
      * @param mixed $array
+     * @param mixed $key
      * @throws Exception
      */
-    public function assertArrayHasKey($key, $array, string $message = '')
+    public function assertArrayHasKey($array, $key, string $message = '')
     {
         $hasKey = (isset($array[$key]) == true);
 
